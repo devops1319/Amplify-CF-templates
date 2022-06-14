@@ -1,0 +1,52 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Paramterized template for creating Amplify-S3 bucket 
+Parameters:
+  Versioning:
+    Description: Whether versioning is required for the S3 bucket 
+    Default: Suspended
+    Type: String
+    AllowedValues: [Enabled, Suspended]
+  Owner:
+    Type: String
+    Description: Bucket owner
+  Department:
+    Type: String
+    Description: Department name,
+    Default: IT
+    
+Resources:
+  Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref "AWS::StackName"
+      AccessControl: Private 
+      VersioningConfiguration:
+        Status: !Ref Versioning
+# create a bucket with default server—side encryption (SSE) 
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+        — ServerSideEncryptionByDefault:
+            SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration: 
+        BlockPublicAcls: true 
+        BlockPublicPolicy: true 
+        IgnorePublicAcls: true 
+        RestrictPublicBuckets: true
+      Tags:
+      — Key: Owner
+      Value: !Ref Owner
+      —	Key: Department
+      Value: !Ref Department
+Outputs:
+  BucketName:
+    Value: !Ref 
+  Bucket BucketArn:
+    Value: !GetAtt Bucket.Arn
+  BucketDomainName:
+    Value: !GetAtt Bucket.DomainName
+  BucketDualStackDomainName:
+    Value: !GetAtt Bucket. DualStackDomainName 
+  BucketRegionalDomainName:
+    Value: !GetAtt Bucket.RegionalDomainName
+  BucketWebsiteUrl:
+    Value: !GetAtt Bucket.WebsiteURL
