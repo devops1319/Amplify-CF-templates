@@ -1,0 +1,20 @@
+{
+"Version": "2012-10-17",
+"Statement": [
+    {
+        "Sid": "MinimPermissionSetAmplify",
+        "Effect": "Allow",
+        "Action": [
+            "appsync:*",
+			"apigateway:*"
+			"sagemaker:*"
+            "cloudformation:*",
+            "iam:*",
+            "lambda:*",
+            "s3:*",
+            "amplify:*"
+        ],
+        "Resource": "*"
+    }
+]
+}
