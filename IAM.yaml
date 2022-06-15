@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: Paramterized template for creating IAM-Amplify
+Description: Template for creating IAM-Amplify
 Parameters:
 Resources:
   myUser:
@@ -34,11 +34,11 @@ Resources:
                 Action:
                   - "apigateway:*",
                   - "sagemaker:*",
-		          - "cloudformation:*",
-		          - "iam:*",
-		          - "lambda:*"
-		          - "s3:*",
-		          - "amplify:*"
+		  - "cloudformation:*",
+		  - "iam:*",
+		  - "lambda:*"
+		  - "s3:*",
+		  - "amplify:*"
                 Resource: '*'
 Resources:
   myUser:
